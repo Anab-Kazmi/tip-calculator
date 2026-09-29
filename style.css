@@ -1,0 +1,279 @@
+/* Must remain at the absolute top of the stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap');
+
+/* =========================================
+   1. DESIGN SYSTEM VARIABLES
+========================================= */
+:root {
+    --bg-page: #0f172a;
+    --card-surface: #1e293b;
+    --panel-surface: #0f172a;
+    --accent-emerald: #10b981;
+    --accent-hover: #34d399;
+    --text-heading: #f8fafc;
+    --text-muted: #94a3b8;
+    --input-bg: #334155;
+    --error-color: #f87171;
+    --radius-main: 24px;
+    --radius-inner: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-page);
+    color: var(--text-heading);
+    padding: 20px;
+}
+
+/* =========================================
+   2. MAIN CONTAINER & LAYOUT
+========================================= */
+.app-container {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.app-brand h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 6px;
+    color: var(--accent-emerald);
+    text-align: center;
+}
+
+.app-brand p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 4px;
+}
+
+.calculator-card {
+    width: 100%;
+    background: var(--card-surface);
+    border-radius: var(--radius-main);
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 768px) {
+    .calculator-card {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* =========================================
+   3. INPUT FORM PANEL
+========================================= */
+.input-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.field-label {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.inline-error {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--error-color);
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.field-control {
+    width: 100%;
+    background: var(--input-bg);
+    border: 2px solid transparent;
+    border-radius: var(--radius-inner);
+    padding: 14px 16px 14px 48px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    outline: none;
+    transition: all 0.2s ease;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.field-control:focus {
+    border-color: var(--accent-emerald);
+}
+
+.unit-tag {
+    position: absolute;
+    left: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.icon-user {
+    font-size: 0.9rem;
+}
+
+/* Hide spin arrows on number inputs */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Tip Grid Buttons */
+.tip-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.tip-btn {
+    background: var(--input-bg);
+    color: var(--text-heading);
+    border: none;
+    border-radius: var(--radius-inner);
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tip-btn:hover {
+    background: var(--accent-hover);
+    color: var(--bg-page);
+}
+
+.tip-btn.active {
+    background: var(--accent-emerald);
+    color: var(--bg-page);
+}
+
+.custom-tip-input {
+    padding: 12px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* =========================================
+   4. SUMMARY RESULTS PANEL
+========================================= */
+.summary-panel {
+    background: var(--panel-surface);
+    border-radius: var(--radius-inner);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.summary-details {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.row-label h3 {
+    font-size: 0.95rem;
+    color: var(--text-heading);
+}
+
+.row-label p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.row-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--accent-emerald);
+}
+
+.row-value.highlight {
+    font-size: 2.1rem;
+    background: linear-gradient(135deg, var(--accent-emerald), var(--accent-hover));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.grand-total-row {
+    padding-top: 16px;
+    border-top: 1px solid var(--input-bg);
+}
+
+/* Reset Button */
+.action-reset {
+    width: 100%;
+    padding: 16px;
+    background: var(--accent-emerald);
+    color: var(--bg-page);
+    border: none;
+    border-radius: var(--radius-inner);
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.action-reset:hover:not(:disabled) {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+.action-reset:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+.hidden {
+    display: none !important;
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill & Tip Splitter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="app-container">
+        
+        <header class="app-brand">
+            <h1>EASY SPLIT</h1>
+            <p>Smart Bill & Tip Calculator</p>
+        </header>
+
+        <div class="calculator-card">
+            
+            <!-- INPUT SECTION -->
+            <form id="calc-form" class="input-panel" novalidate>
+                
+                <!-- Bill Input -->
+                <div class="field-group">
+                    <label for="bill-input" class="field-label">Bill Amount</label>
+                    <div class="input-wrapper">
+                        <span class="unit-tag">Rs</span>
+                        <input type="number" id="bill-input" class="field-control" placeholder="0.00" min="0" step="any">
+                    </div>
+                </div>
+
+                <!-- Tip Select Buttons -->
+                <div class="field-group">
+                    <label class="field-label">Select Tip %</label>
+                    <div class="tip-grid">
+                        <button type="button" class="tip-btn" data-percentage="5">5%</button>
+                        <button type="button" class="tip-btn" data-percentage="10">10%</button>
+                        <button type="button" class="tip-btn active" data-percentage="15">15%</button>
+                        <button type="button" class="tip-btn" data-percentage="20">20%</button>
+                        <button type="button" class="tip-btn" data-percentage="25">25%</button>
+                        <input type="number" id="custom-tip" class="field-control custom-tip-input" placeholder="Custom" min="0" step="any">
+                    </div>
+                </div>
+
+                <!-- Number of People -->
+                <div class="field-group">
+                    <div class="label-row">
+                        <label for="people-input" class="field-label">Number of People</label>
+                        <span id="people-error" class="inline-error hidden">Can't be zero</span>
+                    </div>
+                    <div class="input-wrapper">
+                        <span class="unit-tag icon-user">👤</span>
+                        <input type="number" id="people-input" class="field-control" value="1" min="1" step="1">
+                    </div>
+                </div>
+
+            </form>
+
+            <!-- DISPLAY SECTION -->
+            <section class="summary-panel">
+                <div class="summary-details">
+                    
+                    <div class="summary-row">
+                        <div class="row-label">
+                            <h3>Tip Amount</h3>
+                            <p>/ person</p>
+                        </div>
+                        <div class="row-value" id="tip-per-person">Rs 0.00</div>
+                    </div>
+
+                    <div class="summary-row">
+                        <div class="row-label">
+                            <h3>Total</h3>
+                            <p>/ person</p>
+                        </div>
+                        <div class="row-value" id="total-per-person">Rs 0.00</div>
+                    </div>
+
+                    <div class="summary-row grand-total-row">
+                        <div class="row-label">
+                            <h3>Overall Bill Total</h3>
+                        </div>
+                        <div class="row-value highlight" id="grand-total-amount">Rs 0.00</div>
+                    </div>
+
+                </div>
+
+                <button type="button" id="reset-btn" class="action-reset" disabled>RESET</button>
+            </section>
+
+        </div>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
